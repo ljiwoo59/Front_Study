@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function handleEvent(num) {
+            if (num == 1) {
+                //alert("자바스크립트 클릭 이벤트 테스트");
+                let result = confirm("오늘 날씨가 맑나요?");
+                if (result) alert("sunny");
+                else alert("cloudy");
+            }
+            else if (num == 2) alert("자바스크립트 마우스오버 이벤트 테스트");
+            else if (num == 3) open("http://www.naver.com", "naver", "width=300px, height=300px, scrollbars=yes"); // pop-up
+            else if (num == 4) print();
+            else close();
+        }
+    </script>
+</head>
+<body>
+    <h1>Event test</h1>
+    <hr>
+    <button onclick="handleEvent(1)">click</button>
+    <button onmouseover="handleEvent(2)">mouseover</button>
+    <button onclick="handleEvent(3)">open</button>
+    <button onclick="handleEvent(4)">print</button>
+    <button onclick="handleEvent(5)">close</button>
+</body>
+</html>
