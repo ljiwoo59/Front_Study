@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 1. 리터럴 방식의 객체 생성 방법
+        // 객체 정의와 생성이 동시에 일어남
+        // 주용도: 데이터와 함수를 하나의 단위로 포장
+        let name = "rolly";
+        let age = 33;
+
+        var user = {
+            name: "tommy",
+            age: 25,
+            showInfo: function() {
+                document.write("name: " + this.name + "<br>"); // this 를 안쓰면 밖에 있는 name
+                document.write("age: " + this.age + "<br>"); // 이 객체의 age
+            }
+        };
+
+        for (var key in user) {
+            document.write(key + ":" + user[key] + "<br>");
+        }
+
+        document.write(("name" in user) + "<br>");
+        document.write(user.name + "<br>");
+        document.write(user["name"] + "<br>");
+        user.showInfo();
+
+        document.write("=======================================" + "<br>");
+
+        // 2. function 을 이용한 생성자 방식
+        function User(name, age) {
+            this.age = age;
+            this.name = name;
+            this.showInfo = function() {
+                document.write("name: " + this.name + "<br>"); 
+                document.write("age: " + this.age + "<br>");
+            }
+        };
+        let u1 = new User("harry", 20);
+        let u2 = new User("bill", 30);
+        let u3 = new User("kim", 10);
+        u1.showInfo();
+        u2.showInfo();
+        u3.showInfo();
+
+        document.write("======================================" + "<br>");
+
+        function Circle(r) {
+            this.r = r;
+            var result;
+            this.getArea = function() {
+                result = r * r * Math.PI;
+                document.write("Area: " + result + "<br>");
+                
+            }
+            this.getCircum = function() {
+                result = 2 * r * Math.PI;
+                document.write("Circum: " + result + "<br>");
+            }
+        };
+        let c1 = new Circle(5);
+        let c2 = new Circle(10);
+        c1.getArea();
+        c1.getCircum();
+        c2.getArea();
+        c2.getCircum();
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
