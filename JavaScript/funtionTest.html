@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 1. 선언적 함수 - 이름이 있는 함수
+        function go() {
+            alert("hello");
+        }
+        //go();
+
+        function add(a, b) {
+            return a+b;
+        }
+        //alert(add(12,33));
+
+        function loopString(msg, count) {
+            for(var i = 0; i < count; i++)
+                document.write(msg + "<br>");
+        }
+        //loopString("hello", 5);
+
+        // 2. 익명 함수 - 이름이 없는 함수
+
+        // 1) 함수를 변수에 저장
+        let f1 = () => console.log("Annonymous");
+        let f2 = function () {
+            console.log("Annonymous2");
+        }
+        //f1();
+        //f2();
+
+        // 2) 함수를 parameter 로 사용
+        function functest(some) {
+            some();
+        }
+        //functest(f1);
+        functest(function () {
+            alert("hi~");
+        });
+
+        // 3) 리턴값으로 함수 사용
+        function f3() {
+            /*
+            return function () {
+                console.log("i'll be back....");
+            }
+            */
+    
+            function inner() { // closure : 자신의 사용 scope 를 벗어나서 사용 가능한 함수
+                // 내부 함수
+                log("i'll be back....");
+            }
+            return inner;
+        }
+
+        let result = f3();
+        result();
+        f3()();
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

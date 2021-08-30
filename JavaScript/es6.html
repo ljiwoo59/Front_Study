@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 1. 변수 - scoped variable
+        var x = 10;
+        for(var x = 0; x < 5; x++) console.log(x);
+        console.log(x); // x = 5
+        
+        console.log("=========================================");
+
+        let y = 10;
+        for (let y = 0; y < 5; y++) console.log(y);
+        console.log(y); // y = 10
+
+        // let y = 99; // error
+
+        // 2. backtick(`) 사용 가능
+        var message = `
+        나는
+        자바스크립트를
+        좋아합니다.`;
+        console.log(message);
+
+        const num = 111; // 상수
+        const name = "lee";
+        console.log(`${name}의 번호는 ${num}입니다.`);
+
+        // 3. 화살표 함수 사용 가능
+        let multi = (a, b) => a * b; // 함수형 변수
+        console.log(multi(3, 6));
+
+        let msg = (name) => {
+            return 'hello, ' + name;
+        }
+        console.log(msg("lee"));
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
