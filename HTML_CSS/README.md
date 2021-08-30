@@ -141,7 +141,7 @@
   * **name** 은 중복 가능
   * *text, password, search, tel, url, email, datetime, datetime-local, date, month, week, time, number, range, color, checkbox, radio, file, submit, image, reset, button, hidden*
 
-### 공간 분할
+### 공간 분할 Elements
 * **\<div>**
   * block 형식으로 공간을 분할
   * 전체 틀을 만들 때 사용
