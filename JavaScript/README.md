@@ -37,4 +37,29 @@
 * **Object Type**
 * 서로 다른 자료형의 연산 가능
 
-### 객체
+### [객체](https://github.com/ljiwoo59/Front_Study/blob/main/JavaScript/objectTest.html)
+* **Key 와 Value** 로 구성
+* 함수는 일급 객체이므로 **value** 로 사용 가능
+* **객체 리터럴**
+  * var Name = {1개 이상의 property 추가}
+* **Object 생성자 함수**
+  * var Name = new Object();
+  * 빈 객체 생성 후 *property* 또는 *method* 추가
+* **생성자 함수**
+  * function Name() {property}
+  * *Property* 가 동일한 객체 여러개 간단히 생성 가능
+* **. 또는 \["Key"]** 를 이용하여 **객체 속성 값 접근 및 변경, 추가**
+  * **||** 연산자 사용 가능
+    * var middle=employee["middle_name"] || "none";
+* **delete** 를 이용하여 **속성 제거**
+* 객체는 복사되지 않고 **참조 된다**
+
+### [함수](https://github.com/ljiwoo59/Front_Study/blob/main/JavaScript/funtionTest.html)
+
+## Web Browser 와 Window 객체
+* **Window 객체는 웹 브라우저에 작동하는 JavaScript 의 최상위 전역 객체**
+  * **BOM (Browser Object Model)**
+* 함수를 호출하면 브라우저에서 제공하는 창을 연다
+  * **alert()** : 브라우저의 알림창
+  * **confirm()** : 브라우저의 확인/취소 선택창
+  * **prompt()** : 브라우저의 입력창
