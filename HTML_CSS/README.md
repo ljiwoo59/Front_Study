@@ -223,3 +223,8 @@
 * **relative** : ***top*** 과 ***left*** 거리 지정 가능
 * **absolute** : 절대적인 위치 지정
 * **fixed** : 스크롤이 일어나도 항상 화면상의 지정된 위치에 있음
+
+---
+
+## [실습](https://github.com/ljiwoo59/Front_Study/blob/main/HTML_CSS/register.html)
+* 회원 등록 화면 구현
