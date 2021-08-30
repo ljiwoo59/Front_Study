@@ -56,10 +56,66 @@
 
 ### [함수](https://github.com/ljiwoo59/Front_Study/blob/main/JavaScript/funtionTest.html)
 
-## Web Browser 와 Window 객체
-* **Window 객체는 웹 브라우저에 작동하는 JavaScript 의 최상위 전역 객체**
+---
+
+## Window 객체
+* **웹 브라우저에 작동하는 JavaScript 의 최상위 전역 객체**
   * **BOM (Browser Object Model)**
-* 함수를 호출하면 브라우저에서 제공하는 창을 연다
+* **navigator** 객체
+  * 브라우저 별로 다르게 처리 가능
+  * 위치 정보를 알려주는 역할
+* **location** 객체
+  * 현재 페이지 주소와 관련 된 정보
+* **history** 객체
+  * 브라우저의 페이지 이력을 담음
+* **opener** 객체
+  * 부모 창을 컨트롤 가능
+  * 값 전달, 새로 고침, 페이지 이동
+* [함수를 호출하면 브라우저에서 제공하는 창을 연다](https://github.com/ljiwoo59/Front_Study/blob/main/JavaScript/eventTest.html)
   * **alert()** : 브라우저의 알림창
   * **confirm()** : 브라우저의 확인/취소 선택창
   * **prompt()** : 브라우저의 입력창
+  * **open()** : 브라우저의 새창
+  * **close()** : 현재 창 닫기
+
+## [DOM (Document Object Model)](https://github.com/ljiwoo59/Front_Study/blob/main/JavaScript/login.html)
+* **HTML 과 XML 문서의 구조를 정의하는 API 제공**
+* 문서 요소로 집합을 트리 형태의 **계층 구조**로 HTML을 표현
+  * 최상위 계층은 **document** 노드
+* HTML 문서의 **검색과 조작 (추가, 수정, 삭제)** 가능
+* **객체**
+  * **createElement(tagName)** : Element node 생성
+  * **createTextNode(text)** : Text node 생성
+  * **appendChild(node)** : 객체에 node 를 child 로 추가
+  * **removeChild(node)** : 객체의 자식 노드를 제거
+  * **setAttribute(name, value)** : 객체의 속성을 지정
+    * 웹 브라우저가 지원하는 태그의 속성도 사용 가능
+  * **getAttribute(name)** : 객체의 속성 값을 조회
+  * **getElementById(id)** : tag 의 **id** 속성이 일치하는 element **객체** 가져오기
+  * **getElementsByClassName(classname)** : tag 의 **class** 속성이 일치하는 element **배열** 가져오기
+  * **getElementsByTagName(tagname)** : **tagname** 이 일치하는 element **배열** 가져오기
+  * **getElementByName(name)** : tag 의 **name** 속성이 일치하는 element **배열** 가져오기
+  * **querySelector(selector)** : selector 에 일치하는 **첫번째** element **객체** 가져오기
+  * **querySelectorAll(selector)** : selector 에 일치하는 모든 element **배열** 가져오기
+
+## [Event](https://github.com/ljiwoo59/Front_Study/blob/main/JavaScript/eventTest.html)
+* 웹 페이지에서 여러 종류의 **상호작용이 있을 때 마다 이벤트 발생**
+* **DOM** 에서 발생하는 이벤트 감지
+  * 이벤트 대상이 되는 특정 **DOM** 을 선택하고 ***이벤트 핸들러*** 등록
+* **이벤트 캡쳐링** : 이벤트가 발생한 요소를 포함하는 부모 HTML 로부터 이벤트의 근원지인 자식요소까지 검사
+  * 캡쳐 속성의 이벤트 핸들러가 등록되어 있으면 수행
+* **이벤트 버블링** : 이벤트 발생 요소부터 요소를 포함하는 부모 요소까지 올라가면서 이벤트를 검사
+  * 버블 속성의 이벤트 핸들러가 등록되어 있으면 수행
+
+## Web Storage
+* **localStorage**
+  * 데이터를 사용자 로컬에 보존하는 방식
+  * 데이터를 저장, 덮어쓰기, 삭제 등 조작 가능
+  * * **Key** 와 **Value** 을 하나의 세트로 저장
+  * 도메인과 브라우저별로 저장
+  * **Cookie** 와의 차이점
+    * 영구적 이용 가능
+    * 언제든 사용 가능
+  * **sessionStorage** 와의 차이점
+    * *localStorage* : 세션이 끊겨도 사용 가능
+    * *sessionStorage* : 같은 세션만 사용 가능
