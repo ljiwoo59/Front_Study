@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(function () {
+            $('table#cus tr:even').css('background', 'pink');
+            $('table#cus tr:odd').css('background', 'skyblue');
+            $('table#cus tr:first').css('background', 'gray').css('color', 'white');
+            $('table#cus tr:last').css('background', 'gray').css('color', 'white').css('text-align', 'center');
+        })
+    </script>
+</head>
+<body>
+    <h1>Table Test</h1>
+    <table id='cus' border="1">
+        <tr>
+            <th>num</th>
+            <th>name</th>
+            <th>address</th>
+        </tr>
+
+        <tr>
+            <td>111</td>
+            <td>kim</td>
+            <td>la</td>
+        </tr>
+
+        <tr>
+            <td>222</td>
+            <td>lee</td>
+            <td>seoul</td>
+        </tr>
+
+        <tr>
+            <td>333</td>
+            <td>park</td>
+            <td>paris</td>
+        </tr>
+
+        <tr>
+            <td>총인원</td>
+            <td colspan="2">3명</td>
+        </tr>
+    </table>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        // read event: html 화면 구성 요소가 모두 로딩이 된 후에 jquery 를 실행하겠다는 의미
+        $(document).ready(function () {
+            // 할 일...
+            $('h1').css('color', 'blue');
+            $('h2').css('color', 'orange');
+            $('h1').css('font-size', '50px ');
+            $('#green').css('color', 'green');
+            $('.pink').css('color', 'pink');
+            $('p').css({
+                'background':'yellow',
+                'font-family':'궁서체',
+                'font-size':'30pt'
+                });
+            
+            // method chaining
+            $('p:last').css('background', 'cyan').css('font-family','맑은고딕').css('font-size', '15pt');
+        });
+    </script>
+</head>
+<body>
+    <p>this is p</p>
+    <p>this is p2</p>
+
+    <h1>this is h1-1</h1>
+    <h1 id='green'>this is h1-2</h1>
+
+    <h2>this is h2-1</h2>
+    <h2>this is h2-2</h2>
+    <h2 class='pink'>this is h2-3</h2>
+</body>
+</html>

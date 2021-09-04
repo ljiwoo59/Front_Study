@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(function() {
+            $('button').on('click', function() {
+                //<h1>hello</hi> 생성 후에 div 의 자식으로 추가
+                var h1 = $('<h1>hello</h1>');
+                //$('div').append(h1);
+                h1.appendTo('div');
+            })
+
+            //$(staticParent).on(eventName, dynamicChildSelector, eventHandler)
+            // html 로딩 당시에는 h1 이라는 태그가 존재하지 않음. h1 은 나중에 이벤트 등으로 생겨남
+            // div 아래 자식 중  h1 태그에 click 이벤트를 등록시킴
+            $('div').on('click', 'h1', function() { //event 등록 대상은 div 가 아니라 h1 이다
+                alert("hi~~~~" + $(this).text())
+            })
+        })
+    </script>
+</head>
+<body>
+    <button>add</button>
+    <hr>
+
+    <div></div>
+</body>
+</html>

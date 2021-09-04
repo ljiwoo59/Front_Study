@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .reverse {
+            background: powderblue;
+            color: olive;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(function() {
+            /*
+            $('h1').click(function() { // event 등록
+                alert($(this).text); // event가 발생한 대상. h1
+            });
+            */
+
+            $('h1').on('click', function() {
+                
+            }); // event 등록 2
+
+            $('h1').mouseenter(function() {
+                $(this).addClass('reverse');
+            });
+
+            $('h1').mouseleave(function() {
+                $(this).removeClass('reverse');
+            });
+
+            $('button:first').click(function() {
+                $('h1').hide();
+            });
+
+            $('button:eq(1)').click(function() {
+                $('h1').show();
+            })
+        })
+    </script>
+</head>
+<body>
+    <button>hide</button>
+    <button>show</button>
+    <hr>
+
+    <h1>header-0</h1>
+    <h1>header-1</h1>
+    <h1>header-2</h1>
+</body>
+</html>

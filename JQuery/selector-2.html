@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('ul li').css('color', 'blue');
+            $('div ul li').css('color', 'red');
+
+            $(':text').val("welcome"); // setter
+            var x = $(':text').val(); // () 안에 아무것도 없으면 getter
+            //alert(x);
+            $(':password').css('border', 'solid 3px red');
+            $(':button').css('background-color', 'salmon');
+            $(':file').css('border', 'dotted 3px blue');
+            $('[href]').css('color', 'green').css('text-decoration', 'none');
+            $('button:first').css('background-color', 'yellow');
+            $('button:eq(1)').css('background-color', 'skyblue');
+
+        })
+    </script>
+</head>
+<body>
+    <div>
+        <ul>
+            <li>Apple</li>
+            <li>Mango</li>
+            <li>Peach</li>
+            <li>Banana</li>
+            <li>Grape</li>
+        </ul>
+    </div>
+    <ul>
+        <li>Apple</li>
+        <li>Mango</li>
+        <li>Peach</li>
+        <li>Banana</li>
+        <li>Grape</li>
+    </ul>
+    <hr>
+    <button>first</button>
+    <button>second</button>
+    <button>third</button>
+    <hr>
+    <form action="#">
+        <input type="text"><br>
+        <input type="password"><br>
+        <input type="button" value="press"><br>
+        <input type="file"><br>
+        <a href="#">gogo</a>
+    </form>
+</body>
+</html>

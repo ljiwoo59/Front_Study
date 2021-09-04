@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(function() {
+            $('input:button').click(function () {
+                var myid = $('#id').val();
+                if (myid=="") {
+                    alert("ID 를 입력해 주세요");
+                    return;
+                }
+
+                var mypw = $('#pw').val();
+                if (mypw=="") {
+                    alert("PW 를 입력해 주세요");
+                    return;
+                }
+
+                $('#f').attr('action', '../day2-js/loginCheck.html');
+                $('#f').submit();
+
+
+            })
+        })
+        // DOM(Document Object Model) : html 문서를 구성하는 모든 요소(tag) 를 객체로 인식해서
+        // 필요한 작업을 수행할 수 있게 도와주는 API
+        // 필요한 작업? 기존의 HTML 문서 구조를 변경(추가, 삭제), 기존 HTML 문서에서 특정한 값을 검색
+        function loginCheck() {
+            // 1. 사용자가 id 칸에 입력을 했는지
+            let myid = document.getElementById("id");
+            if(myid.value == "") {
+                alert("ID를 입력해 주세요!");
+                return;
+            }
+            // 2. 사용자가 pw 칸에 입력을 했는지
+            let mypw = document.getElementById("pw");
+            if(mypw.value == "") {
+                alert("PW를 입력해 주세요!");
+                return;
+            }
+            // 3. 입력이 정상이라면 서버로 전송
+            let myform = document.getElementById("f");
+            myform.method = "get";
+            myform.action = "loginCheck.html";
+            myform.submit();
+        }
+    </script>
+</head>
+<body>
+    <h1>Login</h1>
+    <form id="f">
+        ID: <input type="text" name="id" id="id"><br>
+        PW: <input type="password" name="pw" id="pw"><br>
+        <input type="reset" value="취소">
+        <input type="button" value="전송">
+    </form>
+</body>
+</html>
