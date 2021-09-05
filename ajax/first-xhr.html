@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	var xhr = null;
+	// 1. 비동기 통신에 필요한 XHR 객체 생성
+	function getXHR() {
+		xhr = new XMLHttpRequest();	
+	}
+	
+	// 2. 만들어진 XHR 객체를 가지고 서버에 비동기 요청
+	function getData() {
+		getXHR();
+		
+		// 비동기 요청을 위한 준비
+		xhr.open("get", "first.jsp", true); // get/post, 요청을 받는 곳(서버), true=비동기 false=동기
+		
+		// callback 메소드 등록 (서버로부터 응답의 전송 시작 ~ 전송 ~ 전송 완료 때마다 자동으로 호출되는 메소드)
+		// readystate 값이 바뀔때마다 자동 호출됨
+		xhr.onreadystatechange = callback; // () 를 붙이면 직접적으로 메소드를 호출하는 것, 우리가 원하는 건 state가 변경 되었을 때 자동 호출이 되는 것이다
+		
+		// 비동기 요청
+		xhr.send(null); // get 방식에서 paremeter 는 무조건 null
+	}
+	
+	// XHR 객체가 가지고 있는 readyState 값이 바뀔때마다 자동 호출되는 콜백 함수
+	function callback() {
+		// readyState==4 : 서버로부터 응답 완료, xhr.status==200 : 정상 응답의 경우
+		if (xhr.readyState == 4 && xhr.status == 200) {
+			var re = document.getElementById("result");
+			re.value = xhr.responseText;
+		}
+	}
+	
+	function postData() {
+		getXHR();
+		
+		// 비동기 요청을 위한 준비
+		xhr.open("post", "first.jsp", true); // get/post, 요청을 받는 곳(서버), true=비동기 false=동기
+		
+		// callback 메소드 등록 (서버로부터 응답의 전송 시작 ~ 전송 ~ 전송 완료 때마다 자동으로 호출되는 메소드)
+		// readystate 값이 바뀔때마다 자동 호출됨
+		xhr.onreadystatechange = callback; // () 를 붙이면 직접적으로 메소드를 호출하는 것, 우리가 원하는 건 state가 변경 되었을 때 자동 호출이 되는 것이다
+		
+		// 비동기 요청
+		xhr.send(); // post 방식에서 paremeter가 들어감
+	}
+	
+	// XHR 객체가 가지고 있는 readyState 값이 바뀔때마다 자동 호출되는 콜백 함수
+	function callback() {
+		// readyState==4 : 서버로부터 응답 완료, xhr.status==200 : 정상 응답의 경우
+		if (xhr.readyState == 4 && xhr.status == 200) {
+			var re = document.getElementById("result");
+			re.value = xhr.responseText;
+		}
+	}
+</script>
+</head>
+<body>
+	<h1>Ajax Test</h1>
+	<button onclick="getData()">get data</button>
+	<button onclick="postData()">post data</button>
+	<hr>
+	<textarea id="result" rows="10" cols="30"></textarea>
+</body>
+</html>

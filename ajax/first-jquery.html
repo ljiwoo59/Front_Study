@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$('button:first, button:eq(1)').click(function() {
+			// ajax 요청 보내기
+			$.ajax({
+				url: "first.jsp",
+				success: function(result, status, xhr) { // 필요없는 변수는 넣지 않아도 된다
+					// result: 서버가 보내준 결과
+					// status: 서버의 응답 코드
+					// xhr: XMLHttpRequest
+					$("#result").val(result);
+				},
+				error: function(xhr, status, error) {
+					console.log(xhr, status, error);
+				}
+			});
+		});
+	})
+
+</script>
+</head>
+<body>
+	<h1>JQuery Ajax Test</h1>
+	<button>get data</button>
+	<button>post data</button>
+	<hr>
+	<textarea id="result" rows="10" cols="30"></textarea>
+</body>
+</html>

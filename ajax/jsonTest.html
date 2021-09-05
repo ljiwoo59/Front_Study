@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			// 1. 배열 형식의 json 데이터 받아오기
+			$('button:first').click(function() {
+				$.ajax({
+					url: 'jsonarray.jsp', // ['tommy', 'jane', 'harry']
+					success: function(result) {
+						var json = eval("(" + result + ")"); // 문자열->배열 객체로 변환시켜줌
+						var str = "";
+						
+						for (var i = 0; i < json.length; i++) {
+							str += json[i] + "<br>";
+						}
+						$('#arrayDisplay').html(str);
+					}
+				});
+			});
+			
+			// 2. 단순 collection 구조
+			$('button:eq(1)').click(function() {
+				var find = $('#code').val(); // kr, it ...
+				$.ajax({
+					url: 'jsoncollection.jsp',
+					dataType: 'json', // 서버가 보내주는 데이터 타입
+					success: function(result) {
+						var value = result[find];
+
+						if (value != undefined) {
+							$('#colletionDisplay1').html(value);
+						}
+						else
+							$('#collectionDisplay1').html("no data!");
+						$('#code').val('');
+					}
+				});
+			});
+			
+			
+			// 3. 복잡 collection 구조
+			$('button:last').click(function() {
+				var id = $('#id').val(); // 1, 2, 3
+				$.ajax({
+					url: 'jsoncollection2.jsp',
+					dataType: 'json',
+					success: function(result) {
+						var value = result[id];
+						
+						if (value != undefined) {
+							var name = value.name;
+							var address = value.address;
+							var tel = value.tel;
+							
+							$('#collectionDisplay2').html(name + "<br>" + address + "<br>" + tel);
+						}
+						else
+							$('#collectionDisplay2').html("no data!");
+						$('#id').val('');
+					}
+				});
+			});
+		})
+	</script>
+</head>
+<body>
+	<h1>json array data</h1>
+	<button>array data</button><br>
+	<div id="arrayDisplay"></div>
+	<hr>
+	
+	<h1>json collection data-1</h1>
+	code: <input type="text" id="code">
+	<button>collection data-1</button><br>
+	<div id="colletionDisplay1"></div>
+	<hr>
+	
+	<h1>json collection data-2</h1>
+	id: <input type="text" id="id">
+	<button>collection data-2</button><br>
+	<div id="collectionDisplay2"></div>
+	
+
+</body>
+</html>
