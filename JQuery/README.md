@@ -9,7 +9,7 @@
 
 ## 기본 구문
 ```javascript
-$(selector)\.action();
+$(selector).action();
 ```
 * ***Selector***을 사용하여 **DOM 객체**를 탐색하고, 반환된 **WrapperSet**를 통해 함수 수행
   * *WrapperSet* 는 **Method Chain** 을 제공
