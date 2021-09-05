@@ -31,3 +31,7 @@
 * 기본 구문
 * DOM
 * Event
+
+## [AJAX](https://github.com/ljiwoo59/Front_Study/tree/main/ajax)
+* XMLHttpRequest
+* $.ajax()
