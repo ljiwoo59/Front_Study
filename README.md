@@ -1,6 +1,6 @@
 # Front_Study
 ## Project
-### [반응형 웹페이지 구현](https://github.com/ljiwoo59/HappyHouse_FrontEnd)
+### [HappyHouse 반응형 웹페이지 구현](https://github.com/ljiwoo59/HappyHouse_FrontEnd)
 
 ---
 
