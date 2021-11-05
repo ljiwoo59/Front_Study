@@ -28,6 +28,13 @@
 * Web Storage
 
 ## [ES6](https://github.com/ljiwoo59/Front_Study/tree/main/ES6)
+* let, const
+* Property Shorthand
+* Destructuring Assignment
+* Spread Syntax
+* Default Parameter
+* Template Strings
+* Arrow Function
 
 ## [jQuery](https://github.com/ljiwoo59/Front_Study/tree/main/JQuery)
 * 기본 구문
@@ -41,3 +48,4 @@
 ---
 
 ## [Vue.js](https://github.com/ljiwoo59/Front_Study/tree/main/Vuejs)
+* Basics
