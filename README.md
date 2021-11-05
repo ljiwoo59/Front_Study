@@ -27,6 +27,8 @@
 * **Event**
 * Web Storage
 
+## [ES6](https://github.com/ljiwoo59/Front_Study/tree/main/ES6)
+
 ## [jQuery](https://github.com/ljiwoo59/Front_Study/tree/main/JQuery)
 * 기본 구문
 * DOM
