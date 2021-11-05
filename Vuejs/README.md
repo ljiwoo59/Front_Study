@@ -330,3 +330,102 @@ tag 로 인식: <div v-html="msg"></div> <!-- html 형식 -->
 
 * **생성과 관련된 data 및 method 의 정의**
 * method 안에서 data 를 *this.데이터이름*으로 접근 가능
+
+---
+
+## Computed
+```html
+<!-- computed: computed 가 참조하는 데이터가 수정되지 않는 이상 캐쉬값은 가져다 사용
+    이전에 계산해 두었던 값을 재사용할 때 좋다
+    캐싱 기능을 가지고 있음
+    method format
+-->
+<div id="app">
+<p>{{ hello }}</p>
+<button @click="reverse">reverse</button> <!-- v-on:click -->
+</div>
+
+<script>
+new Vue({
+    el: "#app",
+    data() {
+        return {
+            message: "hello, vue"
+        }
+    },
+    computed: {
+        hello() {
+            console.log("computed");
+            this.message = this.message.split("").reverse().join("");
+            return this.message;
+        }
+    },
+    methods: {
+        reverse() {
+            console.log("method");
+            this.message = this.message.split("").reverse().join("");
+            return this.message;
+        }
+    }
+});
+```
+
+## Watcher
+```html
+<!-- watch: 데이터 변화를 감지하여 자동으로 특정 로직 수행
+    computed 와 유사 - 데이터 호출(서버로 비동기 호출)과 같이 시간이 많이 걸리는 작업에 적합
+    method format - 감시할 데이터 이름으로 함수이름 정하기
+-->
+<div id="app">
+<input type="text" v-model="message">
+</div>
+
+<script>
+new Vue({
+    el: "#app",
+    data() {
+        return {
+            message: "hello, vue!"
+        }
+    },
+    watch: {
+        message: function(val) { // message() {}
+            // val: 변동이 생긴 값
+            console.log(val);
+        }
+    }
+}); 
+</script>
+```
+
+## Filters
+```html
+<!-- filters: 원래의 데이터를 가공하는 작업
+    {{data | filters}} : 원래 데이터(왼쪽)를 필터(오른쪽)으로 가공해서 목적에 맞게 변환시킴
+    method format
+-->
+<div id="app">
+<p>{{message}}</p>
+<p>{{message | toLower}}</p>
+<p>{{message | toUpper}}</p>
+</div>
+
+<script>
+new Vue({
+    el: "#app",
+    data() {
+        return {
+            message: "hello, VUE"
+        }
+    },
+    filters: {
+        toLower(val) {
+            return val.toLowerCase();
+        },
+        toUpper(val) {
+            return val.toUpperCase();
+        }
+    }
+});
+</script>
+```
