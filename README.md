@@ -47,5 +47,6 @@
 
 ---
 
-## [Vue.js](https://github.com/ljiwoo59/Front_Study/tree/main/Vuejs)
-* Basics
+## Vue.js
+### [Basics](https://github.com/ljiwoo59/Front_Study/tree/main/Vuejs/Basics)
+### [Componenet](https://github.com/ljiwoo59/Front_Study/tree/main/Vuejs/Component)
