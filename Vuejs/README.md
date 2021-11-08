@@ -131,7 +131,46 @@ tag 로 인식: <div v-html="msg"></div> <!-- html 형식 -->
 <button v-on:click="hello">welcome, vue!</button> <!-- welcome 을 누르면 hello function 이 실행됨 -->
 <button v-on:click="hello2">welcome2, vue!</button>
 ```
+
+```html
+<!-- 이벤트 수식어 (Event Modifier) -->
+// 클릭 이벤트 전파 중단
+<a v-on:click.stop="doThis"></a>
+
+// 제출 이벤트가 페이지를 로드하지 않음
+<form v-on:submit.prevent="onSubmit"></form>
+
+// 수식어는 체이닝 가능
+<a v-on:click.stop.prevent="doThat"></a>
+
+// 단순 수식어 사용 가능
+<form v-on:submit.prevent></form>
+```
+
+```html
+<!-- 키 수식어 (Key Modifier)
+        키 이벤트를 수신할 때 어떤 키를 추가할 지 결정할 수 있다
+-->
+<input v-on:keyup.enter="submit">
+<!--
+.enter
+.tab
+.delete (delete 와 backspace 모두 캡처)
+.esc
+.space
+.up
+.down
+.left
+.right
+-->
+```
+
 * *v-on:이벤트종류="실행함수"*
+  * **@** 로 줄일 수 있음
+* inline event handling
+  * 원본 DOM 이벤트에 접근해야 하는 경우, 특별한 *$event* 변수를 사용해 메소드에 전달 가능 
+* method 를 이용한 event handling
+  * 처리 로직을 *v-on* 에 넣기 힘들 때, 처리해야 하는 method 이름을 받아 처리 
 
 ### v-model
 ```html
@@ -158,8 +197,26 @@ tag 로 인식: <div v-html="msg"></div> <!-- html 형식 -->
 </script>
 ```
 
+```html
+<!-- input 대신 change 이후에 동기화 -->
+<input v-model.lazy="msg">
+
+<!-- 자동으로 숫자 형 변환 -->
+<input v-model.number="age" type = "number">
+
+<!-- 자동으로 trim -->
+<input v-model.trim="msg">
+```
+
 * **양방향 바인딩** 처리를 위해 사용
  * form 의 input, textarea
+ * checkbox, radio button
+   * 하나의 체크박스는 단일 boolean 값을 갖는다 
+   * 여러 개의 체크박스는 같은 배열을 바인딩 할 수 있다
+   * 라디오의 경우, 선택된 항목의 value 속성의 값을 관리
+ * select tag
+   * 선택된 항목의 value 속성의 값을 관리
+   * v-model 초기 값이 어떤 옵션에도 없으면, 선택없음 상태로 렌더링 
 
 ### v-bind
 ```html
@@ -372,6 +429,11 @@ new Vue({
 });
 ```
 
+* 특정 데이터의 변경사항을 실시간으로 처리
+* 캐싱을 이용하여 데이터의 *변경이 없을 경우*, 캐싱된 데이터를 반환
+* *Setter* 와 *Getter* 를 직접 지정 가능
+* 작성은 *method* 형태로 작성하지만 Vue 에서 proxy 처리하여 *property* 처럼 사용
+
 ## Watcher
 ```html
 <!-- watch: 데이터 변화를 감지하여 자동으로 특정 로직 수행
@@ -400,6 +462,8 @@ new Vue({
 </script>
 ```
 
+* 특정 property 가 변경될 때 실행할 콜백 함수 설정
+
 ## Filters
 ```html
 <!-- filters: 원래의 데이터를 가공하는 작업
@@ -413,6 +477,14 @@ new Vue({
 </div>
 
 <script>
+// 전역 필터
+Vue.filter(
+    'count1', (val) => {
+        if (val.length == 0) return;
+        return '${val} : ${val.length}';
+    }      
+);
+                
 new Vue({
     el: "#app",
     data() {
@@ -420,6 +492,7 @@ new Vue({
             message: "hello, VUE"
         }
     },
+    // 지역 필터
     filters: {
         toLower(val) {
             return val.toLowerCase();
@@ -431,3 +504,6 @@ new Vue({
 });
 </script>
 ```
+
+* 중괄호 보간법 **\[{{}}]** 또는 **v-bind** 속성에서 사용 가능
+  * \<div v-bind:id="rawId | formatId">\</div> 
