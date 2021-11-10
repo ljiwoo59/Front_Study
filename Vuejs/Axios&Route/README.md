@@ -113,8 +113,9 @@ methods: {
 * **전체 라우터 정보 : this.$router**
 * **현재 호출된 해당 라우터 정보**
   * **this.$route**
-  * **this.$route.params.no**
-  * **this.$route.path**
+  * **this.$route.params.no** : 해당 라우트로 넘겨받은 파라미터 정보
+  * **this.$route.path** : 주소에 변경이 있으면 리로딩
+    * 해당 컴포넌트 내에서 자신 컴포넌트를 또 호출 시, 화면을 리로드 한다
 
 ```javascript
 // go 함수 실행 시, "/main" 에 등록된 컴포넌트로 이동
