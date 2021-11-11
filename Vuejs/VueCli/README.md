@@ -48,3 +48,8 @@
 ## Style
 * 각 *.vue* 파일은 **여러 개의 style** 을 가질 수 있다
 * *scoped* 속성을 이용하여 현재 컴포넌트에만 적용 가능한 CSS 지정 가능
+
+---
+
+## [Practice](https://github.com/ljiwoo59/Front_Study/tree/main/Vuejs/VueCli/CustomerManagement)
+* Customer Management
