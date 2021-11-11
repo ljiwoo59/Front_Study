@@ -1,161 +1,50 @@
-# Component
-* Vue 의 가장 강력한 기능 중 하나
-* HTML Element 를 확장하여 ***재사용 가능한 코드를 캡슐화***
-* Vue Instance 이기도 하기에, 모든 옵션 객체를 사용
-* Life Cycle Hook 사용 가능
-* **전역 컴포넌트**와 **지역 컴포넌트**
+# Vue/CLI
+* **CLI** : Command Line Interface
+* Vue 프로젝트를 빠르게 구성할 수 있는 스캐폴딩 제공
+* 개발의 편리성
+* *node 기반*으로 작동하기에, **Node.js** 와 **NPM** 설치 필요
 
-### 전역 컴포넌트
-```html
-<!-- component: 재사용 가능한 화면 구성 요소 (data, methods, filter...)
-    사용할 때는 태그로 사용한다
-    동일한 화면이 여러곳에서 사용될 때 유용
--->
-<div id="app">
-<my-compo></my-compo>
-</div>
+### vue create \<project-name>
+* 프로젝트 생성
 
-<div id="app2">
-<my-compo></my-compo>
-</div>
+## Node.js
+* 서버에서 *Javascript* 가 작동되도록 해주는 런타임 환경
+* 이벤트 기반 비동기 방식
+    * 응답을 기다리지 않고 다른 API 호출
 
-<script>
-// 전역 컴포넌트
-Vue.component("my-compo", {
-    template: "<div>전역 컴포넌트 입니다.</div>",
-});
+## NPM
+* **Node Package Manager**
+* Command 에서 third party 모듈을 설치하고 관리하는 툴
 
-new Vue({
-    el: "#app"
-});
+### npm init
+* 새로운 프로젝트나 패키지를 만들 때 사용 (*package.json* 생성)
 
-let v2 = new Vue({
-    el: "#app2"
-});
-</script>
-```
+### npm install package
+* 생성되는 위치에서만 사용 가능한 패키지로 설치
 
-* **Vue.componenet(tagName, options)**
+### npm install -g package
+* 글로벌 패키지에 추가
+* 모든 프로젝트에서 사용 가능한 패키지로 설치
 
-### 지역 컴포넌트
-```html
-<!-- component: 재사용 가능한 화면 구성 요소 (data, methods, filter...)
-    사용할 때는 태그로 사용한다
-    동일한 화면이 여러곳에서 사용될 때 유용
--->
-<div id="app">
-<my-local></my-local>
-<my-local2></my-local2>
-</div>
+### npm run serve
+* 서버 실행
 
-<script>
-let loc = {
-    template: "<div>지역 컴포넌트 입니다.</div>"
-};        
-        
-new Vue({
-    el: "#app",
-    components: { 
-        // 지역 컴포넌트
-        "my-local": {
-            template: "<div>지역 컴포넌트 입니다.</div>"
-        },
-        "my-local2" : loc
-    }
-});
-</script>
-```
+---
 
-* *components* 인스턴스 옵션으로 등록함으로서 다른 인스턴스/컴포넌트 범위에서만 사용할 수 있는 컴포넌트 생성
-* **data() { return{} }** 를 사용하여 데이터 공유 문제 해결
+# SFC (Single File Component)
+* 확장자가 ***.vue*** 인 파일
+    * template + script + style
+* 구문 강조 가능
+* 컴포넌트에만 CSS 적용 범위 제한 가능
+* 전처리기를 사용해 기능 확장 가능
 
-# 컴포넌트 간 통신
-* *상위 (부모) - 하위 (자식)* 컴포넌트 간의 data 전달 방법
-* **부모에서 자식: *props* 라는 특별한 속성 전달**
-* **자식에서 부모: *event* 로만 전달 가능**
+## Template
+* 각 *.vue* 파일은 **최대 하나의 template** 을 가질 수 있다
 
-## 상위에서 하위 컴포넌트로 data 전달
-```html
-<div id="app">
-<h2>props test</h2>
-<child-component propsdata="안녕하세요"></child-component>
-<!-- 동적 props -->
-<!-- <child-component v-bind:propsdata="message"></child-component> -->
-</div>
+## Script
+* 각 *.vue* 파일은 **최대 하나의 script** 을 가질 수 있다
+* ES6 을 지원하여, *import* 와 *export* 사용 가능
 
-<script>
-//하위 컴포넌트
-Vue.component('childComponent', {
-props: ['propsdata'],
-template: '<span>{{ propsdata }}</span>',
-});
-        
-new Vue({
-el: '#app',
-// data() {
-//   return {
-//     message: 'hello',
-//   };
-// },
-});
-</script>
-```
-
-* 하위 컴포넌트는 상위 컴포넌트의 값을 *직접 참조 불가능*
-* data 와 마찬가지로 *props 속성의 값*을 template 에서 사용 가능
-
-### 렌더링 과정
-1. *new Vue()* 로 상위 컴포넌트의 인스턴스를 하나 생성
-2. *Vue.component()* 를 이용하여 하위 컴포넌트인 **child-component 생성**
-3. *\<div id="app">* 내부에 *\<child-component>* 가 있기 때문에 **하위 컴포넌트**가 됨
-  * 처음 생성한 인스턴스 객체가 #app 의 요소를 가지기 때문에 부모와 자식 관계 성립
-4. 하위 컴포넌트에 **props** 속성 정의 *\['propsdata']*
-5. html 에 *컴포넌트 태그(child-component)* 를 추가
-6. 하위 컴포넌트에 *v-bind* 속성을 사용하면 상위 컴포넌트의 **data 의 key 에 접근 가능** (message)
-7. 상위 컴포넌트의 message 속성 값인 String 값이 *하위 컴포넌트의 **propsdata 로 전달***
-8. 하위 컴포넌트의 template 속성에 정의된 *\<span>{{propsdata}}\</span>* 에게 전달
-
-### 동적 props
-* ***v-bind*** 를 사용하여 부모의 데이터에 props 를 동적으로 바인딩 가능
-* 데이터가 상위에서 업데이트 될 때마다 하위 데이터로도 전달
-
-### 객체의 속성 전달 props
-```html
-post : {
-   id: 1,
-   title: 'Hello'
-}
-
-<child v-bind="post"></child>
-
-// 아래와 같이 동작
-<child v-bind:id="post.id" v-bind:title="post.title></child>
-```
-
-* 오브젝트의 모든 속성을 전달 할 경우, v-bind:prop-name 대신 v-bind 만 작성함으로 모든 속성 전달 가능
-
-## 하위에서 상위 컴포넌트로 event 전달
-```html
-// 이벤트 발생
-this.$emit("이벤트명");
-
-// 이벤트 수신
-<child v-on:이벤트명="상위 컴포넌트 메소드명"></child>
-```
-
-* 하위 컴포넌트에서 상위 컴포넌트가 지정한 이벤트를 발생 *($emit)*
-* 상위 컴포넌트는 하위 컴포넌트가 발생한 이벤트를 수신 *(on)* 하여 data 처리
-
-### 비 상하위간 통신
-```html
-var bus = new Vue();
-
-// 컴포넌트A
-bus.$emit('id-selected', 1);
-
-// 컴포넌트B
-bus.$on('id-selected', function(id) {});
-```
-
-* 비어있는 Vue Instance 객체를 *Event Bus* 로 사용
-* 상태관리 라이브러리인 ***Vuex*** 사용 권장
+## Style
+* 각 *.vue* 파일은 **여러 개의 style** 을 가질 수 있다
+* *scoped* 속성을 이용하여 현재 컴포넌트에만 적용 가능한 CSS 지정 가능
