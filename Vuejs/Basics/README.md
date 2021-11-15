@@ -54,16 +54,16 @@
 
 * Instance **생성**, 생성된 Instance 를 화면에 **부착**, 부착된 Instance 의 내용이 **갱신**, Instance 가 **소멸**
 * **beforeCreate** : Vue Instance 가 생성되고 각 정보의 설정 전에 호출
- * DOM 과 같은 화면 요소에 접근 불가
+  * DOM 과 같은 화면 요소에 접근 불가
 * **created** : Vue Instance 가 생성된 후 데이터들의 설정이 완료된 후 호출
- * Instance 가 화면에 부착하기 전이기에, *template 속성*에 정의된 DOM 요소는 접근 불가
- * *서버에 데이터를 요청(http 통신)하여 받아오는 로직을 수행*하기에 좋다
+  * Instance 가 화면에 부착하기 전이기에, *template 속성*에 정의된 DOM 요소는 접근 불가
+  * *서버에 데이터를 요청(http 통신)하여 받아오는 로직을 수행*하기에 좋다
 * **beforeMount** : 마운트가 시작되기 전에 호출
 * **mounted** : 지정된 element 에 Vue Instance 데이터가 마운트 된 후에 호출
- * *template 속성*에 정의한 화면 요소에 접근할 수 있어 *화면 요소를 제어하는 로직 수행*
+  * *template 속성*에 정의한 화면 요소에 접근할 수 있어 *화면 요소를 제어하는 로직 수행*
 * **beforeUpdate** : 데이터가 변경될 때, virtual DOM 이 랜더링, 패치 되기 전에 호출
 * **updated** : Vue 에서 관리되는 데이터가 변경되어 DOM 이 업데이트 된 상태
- * 데이터 변경 후 화면 요소 제어와 관련된 로직 추가
+  * 데이터 변경 후 화면 요소 제어와 관련된 로직 추가
 * **beforeDestroy** : Vue Instance 가 제거되기 전에 호출
 * **destroyed** : Vue Instance 가 제거된 후에 호출
 
