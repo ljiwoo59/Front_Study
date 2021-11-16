@@ -52,3 +52,4 @@
 ### [Component](https://github.com/ljiwoo59/Front_Study/tree/main/Vuejs/Component)
 ### [Axios & Router](https://github.com/ljiwoo59/Front_Study/tree/main/Vuejs/Axios%26Route)
 ### [Vue/CLI](https://github.com/ljiwoo59/Front_Study/tree/main/Vuejs/VueCli)
+### [Vuex](https://github.com/ljiwoo59/Front_Study/tree/main/Vuejs/Vuex)
